@@ -1,5 +1,5 @@
 import search from "../../assets/search.svg";
-const Input = () => {
+const Search = () => {
   return (
     <form action='#'>
       <div className='flex items-center space-x-2 py-2 px-3 group focus-within:bg-black/30 transition-all border-b border-white/50 focus-within:border-b-0 focus-within:rounded-md'>
@@ -17,4 +17,4 @@ const Input = () => {
   );
 };
 
-export default Input;
+export default Search;

@@ -32,7 +32,7 @@ export const useWeather = () => {
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${
           import.meta.env.VITE_WEATHER_API_key
-        }`
+        }&units=metric`
       );
       const data = await response.json();
 
@@ -44,13 +44,12 @@ export const useWeather = () => {
         maxTemperature: data?.main?.temp_max,
         minTemperature: data?.main?.temp_min,
         humidity: data?.main?.humidity,
-        cloudPercentage: data?.main?.all,
-        wind: data?.main?.speed,
-        time: data?.wind?.speed,
+        cloudPercentage: data?.clouds?.all,
+        wind: data?.wind?.speed,
+        time: data?.dt,
         longitude: longitude,
         latitude: latitude,
       };
-
       setWeatherData(updateWeatherData);
       if (!response.ok) {
         const errorMessage = `Featching weather data failed: ${response.status}`;
@@ -69,7 +68,7 @@ export const useWeather = () => {
 
   useEffect(() => {
     setLoading({
-      loading: true,
+      state: true,
       message: "Finding location...",
     });
 
